@@ -1,29 +1,23 @@
 """count how many times each space-separated word occurs"""
-text_file = open('test.txt')
 
 
-def word_count(text_file):
-    # create empty dictionary
-    words = {}
+def word_count(file=open("test.txt")):
+    """Open .txt file and add contents to a dictionary, then count how many times each word appears."""
 
-    # for word in text_file:
-    #     #print(word)
-    #     # line.rstrip().split(' ', -1)
-    #     words[word] = words.get(word, 0) + 1
-    #     return words
+    number_of_words = {}
 
-    for line in text_file:
-        new_line = line.rstrip().split()
-        for word in new_line:
-            #a = dict(one=1, two=2, three=3)
-            #b = {'one': 1, 'two': 2, 'three': 3}
-            words[word] = {word: 1}
-            #words[word] = words.get(word, 0) + 1
-            #print(f'{word} {words[word]}')
-            #print(type(words))
-    #return f'{word} {words[word]}'
+    for line in file:
+        #each_word = line.split()
+        for each_word in line.split():
+            if each_word not in number_of_words:
+                number_of_words[each_word] = 1
+            else:
+                number_of_words[each_word] += 1
+            #line.pop(each_word)
+
+            #print(each_word)
+
+    print(number_of_words)
 
 
-print(word_count(text_file))
-
-#https://docs.python.org/3/library/stdtypes.html#mapping-types-dict
+word_count()
